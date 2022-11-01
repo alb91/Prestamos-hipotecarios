@@ -4,7 +4,20 @@
 let homeValue = Number(prompt("Please enter the value of the house you want to purchase."))
 let downPayment = Number(prompt("Please enter the down payment amount you want to make."))
 let loanTerm = Number(prompt("Enter '10', '15', '20' or '25' for the amount of years you want to get the loan for."))
+
+
+//Interest Values
 let loanInterest = 0;
+let tenYearInterest = .07;
+let fifteenYearInterest = .09;
+let twentyYearInterest = .11;
+let twentyFiveYearInterest = .13;
+
+//Loan term by month amount. 
+let tenYearLoan = 120;
+let fifteenYearLoan = 180;
+let twentyYearLoan = 240;
+let twentyFiveYearLoan = 300;
 
 
 // Calculate loan amount.
@@ -17,16 +30,16 @@ function loanAmount() {
 // Calculate loan interest.
 switch(loanTerm) {
     case 10:
-        loanInterest = loanAmount() * .07;
+        loanInterest = loanAmount() * tenYearInterest;
         break;
     case 15:
-        loanInterest = loanAmount() * .09;
+        loanInterest = loanAmount() * fifteenYearInterest;
         break;
     case 20:
-        loanInterest = loanAmount() * .11;
+        loanInterest = loanAmount() * twentyYearInterest;
         break;
     case 25:
-        loanInterest = loanAmount() * .13;
+        loanInterest = loanAmount() * twentyFiveYearInterest;
         break;
 
 }
@@ -41,13 +54,13 @@ function totalAmount() {
 //Calculate monthly payment
 function monthlyPayment() {
     if (loanTerm == 10) {
-            return totalAmount() / 120;
+            return totalAmount() / tenYearLoan;
         } else if (loanTerm == 15) {
-            return totalAmount() / 180;
+            return totalAmount() / fifteenYearLoan;
         } else if (loanTerm == 20) {
-            return totalAmount() / 240;
+            return totalAmount() / twentyYearLoan;
         }  else if (loanTerm == 25) {
-            return totalAmount() / 300;
+            return totalAmount() / twentyFiveYearLoan;
         }
 }
 
