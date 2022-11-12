@@ -1,8 +1,47 @@
 
+const houses = [
+    {
+        "area": "beach",
+        "rooms": 2,
+        "bathrooms": 1,
+        "price": 100000,
+        "id": 1
+    },
+    {
+        "area": "downtown",
+        "rooms": 1,
+        "bathrooms": 1,
+        "price": 150000,
+        "id": 2
+    },
+     {
+        "area": "country",
+        "rooms": 4,
+        "bathrooms": 3,
+        "price": 50000,
+        "id": 3
+    },
+    {
+        "area": "suburbs",
+        "rooms": 4,
+        "bathrooms": 3,
+        "price": 250000,
+        "id": 4
+    },
+    {
+        "area": "downtown",
+        "rooms": 1,
+        "bathrooms": 1,
+        "price": 90000,
+        "id": 5
+    },
 
-// Questions.
-let homeValue = Number(prompt("Please enter the value of the house you want to purchase."))
-let downPayment = Number(prompt("Please enter the down payment amount you want to make."))
+]
+
+//ID Search.
+let houseToBuy;
+let homeIdSelection = Number(prompt("Please enter the ID of the house you wish to purchase (From 1 to 5)"));
+let downPayment = Number(prompt("Please enter the down payment amount you want to make."));
 let loanTerm = Number(prompt("Enter '10', '15', '20' or '25' for the amount of years you want to get the loan for."))
 
 
@@ -20,9 +59,21 @@ let twentyYearLoan = 240;
 let twentyFiveYearLoan = 300;
 
 
+
+// ID search of the house. 
+function houseIdSearch() {
+    houseToBuy = houses.find(houseToBuy => houseToBuy.id === homeIdSelection);
+    if (houseToBuy == undefined) {
+        console.log("That house is not available.")
+    }
+    return houseToBuy 
+    }
+    
+
+
 // Calculate loan amount.
 function loanAmount() {
-    return homeValue - downPayment;
+    return houseIdSearch().price - downPayment;
     
 }
 
