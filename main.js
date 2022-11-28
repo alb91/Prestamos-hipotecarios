@@ -46,40 +46,74 @@ const houses = [
     },
 ];
 
+
 let homeIdSelection;
 
+function displayHouses() {
+    let cardHouses = document.getElementById("divHouses");
+    houses.forEach((seenHouse) => {
+        cardHouses.innerHTML += `
+        <div id="card">
+            <div id="imgBox">${seenHouse.image} alt="house for sale" id="mouse"</div>
 
-// Images
-for (const house of houses) {
-
-    let container = document.createElement("div");
-    container.innerHTML = `
-                            <p>${house.image}</p>
-                            <p><button id="${house.id}" onclick="imageClick()">Select</button></p>
-                            <p> Price: ${house.price} </p>
-                            <p> Bedrooms: ${house.bedrooms} </p>
-                            <p> Bathrooms: ${house.bathrooms} </p>
-                            <p> Area: ${house.area} </p> `;
-
-
-    function imageClick() {
-        // Al momento de hacer click en la imagen no puedo pasar el valor de "house.id", 
-        //Únicamente se guarda el último valor del loop que sería house.id = 5, 
-        // pero este tampoco se pasa a "homeIdSelection", sino que queda como "null" 
-        homeIdSelection = document.getElementById(`"${house.id}"`)
-        debugger
-        
-        
-
-    }
-
-    document.body.appendChild(container);
+            <div id="contentBox">
+                <p> Price: ${seenHouse.price} </p>
+                <p> Bedrooms: ${seenHouse.bedrooms} </p>
+                <p> Bathrooms: ${seenHouse.bathrooms} </p>
+                <button onclick="saveOnCart(${seenHouse.id})" class="buy">Select</button>
+            </div>
+        </div>`
     
+    })
 };
 
+displayHouses();
+
+function saveOnCart() {
+
+    homeIdSelection = document.getElementById(`"${seenHouse.id}"`);
+    console.log(homeIdSelection);
+    
+
+}
 
 
-console.log(homeIdSelection);
+
+
+
+
+
+// // Images
+// for (const house of houses) {
+
+//     let container = document.createElement("div");
+//     container.innerHTML = `
+//                             <p>${house.image}</p>
+//                             <p><button id="${house.id}" onclick="imageClick()">Select</button></p>
+//                             <p> Price: ${house.price} </p>
+//                             <p> Bedrooms: ${house.bedrooms} </p>
+//                             <p> Bathrooms: ${house.bathrooms} </p>
+//                             <p> Area: ${house.area} </p> `;
+
+
+//     function imageClick() {
+//         // Al momento de hacer click en la imagen no puedo pasar el valor de "house.id", 
+//         //Únicamente se guarda el último valor del loop que sería house.id = 5, 
+//         // pero este tampoco se pasa a "homeIdSelection", sino que queda como "null" 
+//         homeIdSelection = document.getElementById(`"${house.id}"`)
+    
+        
+        
+
+//     }
+
+//     document.body.appendChild(container);
+    
+// };
+
+
+
+// console.log(homeIdSelection);
 
 
 // //ID Search.
