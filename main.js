@@ -73,10 +73,17 @@ for (const house of houses) {
 function imageClick(id) {
         homeIdSelection = houses.find(element => element.id === id);
         cart.push(homeIdSelection);
+        saveSelectionStorage(cart);
         console.log(cart);
     
     }
 
+
+// Save to local Storage.
+
+const saveSelectionStorage = (cart) => {
+    localStorage.setItem("addedToCart", JSON.stringify(cart));
+}
 
 
 
